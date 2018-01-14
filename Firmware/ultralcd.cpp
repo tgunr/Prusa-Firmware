@@ -1336,7 +1336,7 @@ static void lcd_return_to_status() {
     currentMenu == lcd_status_screen
 #endif
   );
-
+    display_warning = false;
     lcd_goto_menu(lcd_status_screen, 0, false);
 }
 
