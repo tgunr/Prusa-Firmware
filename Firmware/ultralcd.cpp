@@ -5253,20 +5253,20 @@ static bool lcd_selfcheck_axis(int _axis, int _travel)
 		{
 			if (_axis == 0)
 			{
-				_stepresult = ((READ(X_MIN_PIN) ^ X_MIN_ENDSTOP_INVERTING) == 1) ? true : false;
-				_err_endstop = ((READ(Y_MIN_PIN) ^ Y_MIN_ENDSTOP_INVERTING) == 1) ? 1 : 2;
+				_stepresult = (READ(X_MIN_PIN) ^ X_MIN_ENDSTOP_INVERTING) == 1;
+				_err_endstop = (READ(Y_MIN_PIN) == 1) ? 1 : 2;
 				
 			}
 			if (_axis == 1)
 			{
-				_stepresult = ((READ(Y_MIN_PIN) ^ Y_MIN_ENDSTOP_INVERTING) == 1) ? true : false;
-				_err_endstop = ((READ(X_MIN_PIN) ^ X_MIN_ENDSTOP_INVERTING) == 1) ? 0 : 2;
+				_stepresult = (READ(Y_MIN_PIN) ^ Y_MIN_ENDSTOP_INVERTING) == 1;
+				_err_endstop = (READ(X_MIN_PIN) == 1) ? 0 : 2;
 				
 			}
 			if (_axis == 2)
 			{
-				_stepresult = ((READ(Z_MIN_PIN) ^ Z_MIN_ENDSTOP_INVERTING) == 1) ? true : false;
-				_err_endstop = ((READ(X_MIN_PIN) ^ X_MIN_ENDSTOP_INVERTING) == 1) ? 0 : 1;
+				_stepresult = (READ(Z_MIN_PIN) ^ Z_MIN_ENDSTOP_INVERTING) == 1;
+				_err_endstop = (READ(X_MIN_PIN) == 1) ? 0 : 1;
 				/*disable_x();
 				disable_y();
 				disable_z();*/
