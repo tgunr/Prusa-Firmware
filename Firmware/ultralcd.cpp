@@ -3007,10 +3007,10 @@ void lcd_move_menu_axis()
 {
 	START_MENU();
 	MENU_ITEM(back, MSG_SETTINGS, lcd_settings_menu);
+    MENU_ITEM(submenu, MSG_MOVE_E, lcd_move_e);
 	MENU_ITEM(submenu, MSG_MOVE_X, lcd_move_x);
 	MENU_ITEM(submenu, MSG_MOVE_Y, lcd_move_y);
 	MENU_ITEM(submenu, MSG_MOVE_Z, lcd_move_z);
-	MENU_ITEM(submenu, MSG_MOVE_E, lcd_move_e);
 	END_MENU();
 }
 
