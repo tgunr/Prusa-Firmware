@@ -115,6 +115,8 @@ unsigned long alert_timer = millis();
 bool printer_connected = true;
 
 unsigned long display_time; //just timer for showing pid finished message on lcd;
+bool display_warning = false;
+
 float pid_temp = DEFAULT_PID_TEMP;
 
 bool long_press_active = false;
@@ -1334,7 +1336,7 @@ static void lcd_return_to_status() {
     currentMenu == lcd_status_screen
 #endif
   );
-
+    display_warning = false;
     lcd_goto_menu(lcd_status_screen, 0, false);
 }
 
@@ -4043,19 +4045,21 @@ static void lcd_disable_farm_mode() {
 	
 }
 
-#if 0
+static void lcd_beeper() {
+    SET_OUTPUT(BEEPER);
+    for (int i = 0; i < 2; i++) {
+        WRITE(BEEPER, HIGH);
+        delay(50);
+        WRITE(BEEPER, LOW);
+        delay(100);
+    }
+}
+#if 1
 static void lcd_ping_alert() {
 	if ((abs(millis() - alert_timer)*0.001) > PING_ALERT_PERIOD) {
 		alert_timer = millis();
-		SET_OUTPUT(BEEPER);
-		for (int i = 0; i < 2; i++) {
-			WRITE(BEEPER, HIGH);
-			delay(50);
-			WRITE(BEEPER, LOW);
-			delay(100);
-		}
-	}
-
+        lcd_beeper();
+    }
 };
 #endif
 
@@ -6025,6 +6029,12 @@ void lcd_update(uint8_t lcdDrawUpdateOverride)
 #endif
 
 #ifdef ULTIPANEL
+      if (millis() > (lcd_timeoutToStatus - 5000) &&
+          currentMenu != lcd_status_screen
+          && display_warning == false) {
+          lcd_beeper();
+          display_warning = true;
+      }
 	  if (lcd_timeoutToStatus < millis() && currentMenu != lcd_status_screen)
 	  {
       // Exiting a menu. Let's call the menu function the last time with menuExiting flag set to true
