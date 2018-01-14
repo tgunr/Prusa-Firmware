@@ -3473,7 +3473,6 @@ static void lcd_settings_menu()
 
   MENU_ITEM(back, MSG_MAIN, lcd_main_menu);
 
-  MENU_ITEM(submenu, MSG_TEMPERATURE, lcd_control_temperature_menu);
   if (!homing_flag)
   {
 	  MENU_ITEM(submenu, MSG_MOVE_AXIS, lcd_move_menu_1mm);
@@ -3482,7 +3481,8 @@ static void lcd_settings_menu()
   {
 	  MENU_ITEM(gcode, MSG_DISABLE_STEPPERS, PSTR("M84"));
   }
-    
+  MENU_ITEM(submenu, MSG_TEMPERATURE, lcd_control_temperature_menu);
+
   if (!farm_mode) { //dont show in menu if we are in farm mode
 	  switch (SilentModeMenu) {
 	  case 0: MENU_ITEM(function, MSG_SILENT_MODE_OFF, lcd_silent_mode_set); break;
