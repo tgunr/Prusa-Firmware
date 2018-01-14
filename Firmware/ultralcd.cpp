@@ -4680,7 +4680,8 @@ static void lcd_main_menu()
     MENU_ITEM(submenu, MSG_TUNE, lcd_tune_menu);
   } else 
   {
-    MENU_ITEM(submenu, MSG_PREHEAT, lcd_preheat_menu);
+      MENU_ITEM(submenu, MSG_PREHEAT, lcd_preheat_menu);
+      MENU_ITEM(submenu, MSG_SETTINGS, lcd_settings_menu);
   }
 
 #ifdef SDSUPPORT
@@ -4739,7 +4740,6 @@ static void lcd_main_menu()
 	MENU_ITEM(submenu, MSG_UNLOAD_FILAMENT, fil_unload_menu);
 	MENU_ITEM(submenu, MSG_CHANGE_EXTR, change_extr_menu);
 	#endif
-	MENU_ITEM(submenu, MSG_SETTINGS, lcd_settings_menu);
     if(!isPrintPaused) MENU_ITEM(submenu, MSG_MENU_CALIBRATION, lcd_calibration_menu);
   }
 
