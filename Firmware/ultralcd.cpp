@@ -5195,7 +5195,7 @@ static bool lcd_selftest()
 		current_position[X_AXIS] = current_position[X_AXIS] - 3;
 		current_position[Y_AXIS] = current_position[Y_AXIS] - 14;
 		_progress = lcd_selftest_screen(4, _progress, 3, true, 1500);
-		_result = lcd_selfcheck_axis(2, Z_MAX_POS);
+		_result = lcd_selfcheck_axis(Z_AXIS, Z_MAX_POS);
 		if (eeprom_read_byte((uint8_t*)EEPROM_WIZARD_ACTIVE) != 1) {
 			enquecommand_P(PSTR("G28 W"));
 			enquecommand_P(PSTR("G1 Z15"));
@@ -5244,7 +5244,7 @@ static bool lcd_selfcheck_axis(int _axis, int _travel)
 	do {
 		current_position[_axis] = current_position[_axis] - 1;
 
-		plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS], current_position[3], manual_feedrate[0] / 60, active_extruder);
+		plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS], current_position[E_AXIS], manual_feedrate[0] / 60, active_extruder);
 		st_synchronize();
 
 		if (((READ(X_MIN_PIN) ^ X_MIN_ENDSTOP_INVERTING) == 1) ||
