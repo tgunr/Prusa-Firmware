@@ -1369,13 +1369,29 @@ void lcd_preheat_pla()
   setWatch(); // heater sanity check timer
 }
 
+void lcd_preheat_200()
+{
+    setTargetHotend0(200);
+    fanSpeed = 0;
+    lcd_return_to_status();
+    setWatch(); // heater sanity check timer
+}
+
+void lcd_preheat_250()
+{
+    setTargetHotend0(250);
+    fanSpeed = 0;
+    lcd_return_to_status();
+    setWatch(); // heater sanity check timer
+}
+
 void lcd_preheat_abs()
 {
-  setTargetHotend0(ABS_PREHEAT_HOTEND_TEMP);
-  setTargetBed(ABS_PREHEAT_HPB_TEMP);
-  fanSpeed = 0;
-  lcd_return_to_status();
-  setWatch(); // heater sanity check timer
+    setTargetHotend0(ABS_PREHEAT_HOTEND_TEMP);
+    setTargetBed(ABS_PREHEAT_HPB_TEMP);
+    fanSpeed = 0;
+    lcd_return_to_status();
+    setWatch(); // heater sanity check timer
 }
 
 void lcd_preheat_pp()
@@ -1433,6 +1449,8 @@ static void lcd_preheat_menu()
 
   MENU_ITEM(back, MSG_MAIN, lcd_main_menu);
 
+  MENU_ITEM(function, PSTR("Nozzle  -  200"), lcd_preheat_200);
+  MENU_ITEM(function, PSTR("Nozzle  -  250"), lcd_preheat_250);
   MENU_ITEM(function, PSTR("ABS  -  " STRINGIFY(ABS_PREHEAT_HOTEND_TEMP) "/" STRINGIFY(ABS_PREHEAT_HPB_TEMP)), lcd_preheat_abs);
   MENU_ITEM(function, PSTR("PLA  -  " STRINGIFY(PLA_PREHEAT_HOTEND_TEMP) "/" STRINGIFY(PLA_PREHEAT_HPB_TEMP)), lcd_preheat_pla);
   MENU_ITEM(function, PSTR("PET  -  " STRINGIFY(PET_PREHEAT_HOTEND_TEMP) "/" STRINGIFY(PET_PREHEAT_HPB_TEMP)), lcd_preheat_pet);
