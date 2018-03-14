@@ -223,7 +223,7 @@
 				5AF0DB9309233B038EA813BD /* watchdog.cpp */,
 				5AF0D64ECF436A196062F6BE /* watchdog.h */,
 			);
-			path = Firmware;
+			name = Firmware;
 			sourceTree = "<group>";
 		};
 		5AF0DD30FCD6547742506F24 /* Products */ = {
@@ -459,6 +459,7 @@
 				5AF0D1B5969543576234743C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
