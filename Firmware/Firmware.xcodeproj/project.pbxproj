@@ -127,6 +127,8 @@
 		5AF0DF92083F01903584F053 /* langtool.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = langtool.pl; sourceTree = SOURCE_ROOT; };
 		5AF0DFC89DCE047F8950D1E0 /* language_pl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = language_pl.h; sourceTree = SOURCE_ROOT; };
 		5AF0DFEC59597FEE24D97DBD /* langtool.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = langtool.php; sourceTree = SOURCE_ROOT; };
+		75D4D9162059C655003A11F1 /* 1_75mm_MK2-RAMBo13a-E3Dv6full.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "1_75mm_MK2-RAMBo13a-E3Dv6full.h"; path = "variants/1_75mm_MK2-RAMBo13a-E3Dv6full.h"; sourceTree = "<group>"; };
+		75D4D9172059C655003A11F1 /* 1_75mm_MK2-MultiMaterial-RAMBo13a-E3Dv6full.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "1_75mm_MK2-MultiMaterial-RAMBo13a-E3Dv6full.h"; path = "variants/1_75mm_MK2-MultiMaterial-RAMBo13a-E3Dv6full.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,8 @@
 		5AF0DA04B8A52D3BBE30FD72 /* Firmware */ = {
 			isa = PBXGroup;
 			children = (
+				75D4D9172059C655003A11F1 /* 1_75mm_MK2-MultiMaterial-RAMBo13a-E3Dv6full.h */,
+				75D4D9162059C655003A11F1 /* 1_75mm_MK2-RAMBo13a-E3Dv6full.h */,
 				5AF0D7466EA6F28268E5903C /* Configuration_prusa.h */,
 				5AF0D71D6BBBC5054D8B4E62 /* Marlin_main.cpp */,
 				5AF0DE8A51089243BEDE22EC /* Configuration.h */,
