@@ -1357,49 +1357,27 @@ void serial_read_stream() {
 * Output a "busy" message at regular intervals
 * while the machine is not accepting commands.
 */
-static int busySent = 0;
-
 void host_keepalive() {
   if (farm_mode) return;
   long ms = millis();
   if (host_keepalive_interval && busy_state != NOT_BUSY) {
-    if ((ms - prev_busy_signal_ms) < (long)(1000L * host_keepalive_interval))
-        return;
-      switch (busy_state) {
-          case IN_HANDLER:
-          case IN_PROCESS:
-              if (busySent == 0) {
-                  SERIAL_ECHO_START;
-                  SERIAL_ECHOLNPGM("busy: processing");
-                  busySent++;
-              } else {
-                  SERIAL_PROTOCOL(".");
-              }
-              break;
-          case PAUSED_FOR_USER:
-              if (busySent == 0) {
-                  SERIAL_ECHO_START;
-                  SERIAL_ECHOLNPGM("busy: paused for user");
-                  busySent++;
-              } else {
-                  SERIAL_PROTOCOL(".");
-              }
-              break;
-          case PAUSED_FOR_INPUT:
-              if (busySent == 0) {
-                  SERIAL_ECHO_START;
-                  SERIAL_ECHOLNPGM("busy: paused for input");
-                  busySent++;
-              } else {
-                  SERIAL_PROTOCOL(".");
-              }
-              break;
-          case NOT_BUSY:
-              MYSERIAL.write('\n');
-              busySent = 0;
-              break;
-          default:
-              break;
+    if ((ms - prev_busy_signal_ms) < (long)(1000L * host_keepalive_interval)) return;
+     switch (busy_state) {
+      case IN_HANDLER:
+      case IN_PROCESS:
+        SERIAL_ECHO_START;
+        SERIAL_ECHOLNPGM("busy: processing");
+        break;
+      case PAUSED_FOR_USER:
+        SERIAL_ECHO_START;
+        SERIAL_ECHOLNPGM("busy: paused for user");
+        break;
+      case PAUSED_FOR_INPUT:
+        SERIAL_ECHO_START;
+        SERIAL_ECHOLNPGM("busy: paused for input");
+        break;
+      default:
+    break;
     }
   }
   prev_busy_signal_ms = ms;
